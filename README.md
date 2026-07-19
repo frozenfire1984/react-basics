@@ -1,16 +1,28 @@
-# React + Vite
+# React Fundamentals Refresher
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A hands-on playground for refreshing modern React knowledge after previous
+professional experience and preparing for technical interviews.
 
-Currently, two official plugins are available:
+## Purpose
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Revisit React's rendering and state model.
+- Practise modern component, Hooks, and form patterns.
+- Explore common implementation choices and interview topics through small,
+  focused exercises.
+- Progress from isolated fundamentals to a complete application.
 
-## React Compiler
+## Current focus
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- Functional components and JSX.
+- State updates and immutable data transformations.
+- Controlled forms and event handling.
+- Rendering dynamic lists with stable keys.
 
-## Expanding the ESLint configuration
+## Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- React
+- Vite
+- ESLint
+
+This repository intentionally starts with basic exercises and evolves as the
+refresher progresses.

@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import './App.css'
+import TodoItem from "./components/TodoItem.jsx";
 
 const defaultTodoList = [
     {
@@ -15,9 +16,6 @@ const defaultTodoList = [
         title: 'pine'
     },
 ]
-
-
-
 function createId() {
     const _values = new Uint32Array(1)
     crypto.getRandomValues(_values)
@@ -25,9 +23,6 @@ function createId() {
     return _values[0].toString(36)
 }
 function App() {
-
-
-
     const [todoList, setTodoList] = useState(defaultTodoList)
     const todoCount = todoList.length
 
@@ -37,10 +32,6 @@ function App() {
     function handleAddItem(e) {
         e.preventDefault()
         const _trimmedNewItem = newItem.trim()
-
-
-
-
         if (_trimmedNewItem.length > 0) {
             const _objNewItem = {
                 id: createId(),
@@ -50,6 +41,17 @@ function App() {
             setTodoList((todoList) => [...todoList, _objNewItem])
             setNewItem('')
         }
+    }
+    
+    
+    function handleRemoveItem(id) {
+        setTodoList((currentTodoList) => {
+            const _updatedTodoList = currentTodoList.filter((item) => {
+                return item.id !== id
+            })
+
+            return _updatedTodoList
+        })
     }
 
     function handleChange(e) {
@@ -61,7 +63,10 @@ function App() {
             <h1>Todo</h1>
             <ul>
                 {todoList.map((item) => (
-                    <li key={item.id}>{item.id} - {item.title}</li>
+                    <TodoItem
+                        key={item.id}
+                        item={item}
+                        removeItem={handleRemoveItem}/>
                 ))}
             </ul>
             count: {todoCount}
