@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import './App.css'
-import TodoItem from "./components/TodoItem.jsx";
+import TodoItem from './components/TodoItem/TodoItem.jsx';
 
 const defaultTodoList = [
     {
@@ -49,7 +49,7 @@ function App() {
             const _updatedTodoList = currentTodoList.filter((item) => {
                 return item.id !== id
             })
-
+            console.log(`item with ${id} has been removed`)
             return _updatedTodoList
         })
     }
@@ -66,7 +66,7 @@ function App() {
                     <TodoItem
                         key={item.id}
                         item={item}
-                        removeItem={handleRemoveItem}/>
+                        onRemove={handleRemoveItem}/>
                 ))}
             </ul>
             count: {todoCount}
