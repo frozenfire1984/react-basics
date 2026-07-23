@@ -1,11 +1,12 @@
 import { useState } from 'react'
-import './App.css'
+import styles from './App.module.scss'
 import TodoItem from './components/TodoItem/TodoItem.jsx';
 
 const defaultTodoList = [
     {
         id: 1,
-        title: 'apple'
+        title: 'apple',
+        done: true,
     },
     {
         id: 2,
@@ -36,6 +37,7 @@ function App() {
             const _objNewItem = {
                 id: createId(),
                 title: _trimmedNewItem,
+                done: false
             }
 
             setTodoList((todoList) => [...todoList, _objNewItem])
@@ -49,7 +51,22 @@ function App() {
             const _updatedTodoList = currentTodoList.filter((item) => {
                 return item.id !== id
             })
-            console.log(`item with ${id} has been removed`)
+            return _updatedTodoList
+        })
+    }
+
+    function handleDoneItem(id) {
+        setTodoList((currentTodoList) => {
+            const _updatedTodoList = currentTodoList.map((item) => {
+                if (item.id === id) {
+                    return {
+                        ...item,
+                        done: !item.done
+                    }
+                }
+
+                return item
+            })
             return _updatedTodoList
         })
     }
@@ -59,14 +76,16 @@ function App() {
     }
 
     return (
-        <>
+        <section className={styles.container}>
             <h1>Todo</h1>
-            <ul>
+            <ul className={styles.itemList}>
                 {todoList.map((item) => (
                     <TodoItem
                         key={item.id}
                         item={item}
-                        onRemove={handleRemoveItem}/>
+                        onRemove={handleRemoveItem}
+                        onDone={handleDoneItem}
+                    />
                 ))}
             </ul>
             count: {todoCount}
@@ -78,7 +97,7 @@ function App() {
                     onChange={handleChange} />
                 <button type="submit">Add</button>
             </form>
-        </>
+        </section>
     )
 }
 

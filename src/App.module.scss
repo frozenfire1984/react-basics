@@ -1,0 +1,13 @@
+.container {
+  margin: 0 auto;
+  width: min(100%, 800px);
+  padding: 0 20px;
+}
+
+.itemList {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 8px 16px;
+  margin: 0 0 16px;
+  padding: 0;
+}

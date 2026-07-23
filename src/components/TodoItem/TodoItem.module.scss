@@ -1,0 +1,9 @@
+.item {
+  display: grid;
+  grid-column: span 3;
+  grid-template-columns: subgrid;
+
+  &_done {
+    text-decoration: line-through;
+  }
+}

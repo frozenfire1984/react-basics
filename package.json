@@ -12,6 +12,7 @@
 		"test:watch": "vitest"
 	},
 	"dependencies": {
+		"normalize.css": "^8.0.1",
 		"react": "^19.2.7",
 		"react-dom": "^19.2.7"
 	},
@@ -29,6 +30,7 @@
 		"eslint-plugin-react-refresh": "^0.5.3",
 		"globals": "^17.7.0",
 		"jsdom": "^29.1.1",
+		"sass": "^1.101.3",
 		"vite": "^8.1.1",
 		"vitest": "^4.1.10"
 	}
