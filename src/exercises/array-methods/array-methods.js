@@ -40,7 +40,6 @@ const todoStats = todos.reduce((acc, todo) => {
 
 console.log(todoStats)*/
 
-
 const products = [
     { id: 1, title: 'apple', price: 10 },
     { id: 2, title: 'lemon', price: 20 }    ,
@@ -69,7 +68,19 @@ export function _priceIncrease(arr, factor = 1, id = 1) {
     })
 }
 
-export function priceIncrease(arr, factor = 1, id = 1) {
+export function priceIncrease(arr, factor = 1, id) {
+
+    if (!Number.isFinite(factor)) {
+        throw new TypeError('factor must be a finite number')
+    }
+    
+    if (id === undefined && arr.length > 0) {
+        id = arr[0].id
+        
+        console.log('ID')
+        console.log(id)
+    }
+    
     return arr.map((item) => {
         if (item.id === id) {
             return {
@@ -81,12 +92,12 @@ export function priceIncrease(arr, factor = 1, id = 1) {
     })
 }
 
-const productsUpd = priceIncrease(products, 1000, 2)
+//const productsUpd = priceIncrease([], 1000)
 
 //console.log(productsUpd)
 //console.log(products)
 
-console.log(productsUpd[0] === products[0])
+/*console.log(productsUpd[0] === products[0])
 console.log(productsUpd[1] === products[1])
-console.log(productsUpd[2] === products[2])
+console.log(productsUpd[2] === products[2])*/
 

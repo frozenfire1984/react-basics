@@ -9,7 +9,7 @@ function createProducts() {
     ]
 }
 
-describe('Map methods', () => {
+describe('MAP METHODS. priceIncrease()', () => {
     test('Price of id:1 element is increased at 10 time', () => {
 
         const _etalon = [
@@ -40,13 +40,32 @@ describe('Map methods', () => {
         expect(updatedProduct.price).toBe(100)
     })
 
-    test('Call without 3rd param, default is id: 1, increase at 10 time, single element in etalon', () => {
-        const updatedProducts = priceIncrease(createProducts(), 10)
-        const updatedProduct = updatedProducts.find((item) => {
-            return item.id === 1
-        })
+    test('Increases the first product when id is omitted', () => {
+        const _products = [
+            { id: 10, title: 'apple', price: 10 },
+            { id: 11, title: 'lemon', price: 20 },
+            { id: 12, title: 'pine', price: 30 },
+        ]
 
+        const updatedProducts = priceIncrease(_products, 10)
+        const updatedProduct = updatedProducts[0]
         expect(updatedProduct.price).toBe(100)
+        expect(updatedProduct.id).toBe(10)
+    })
+
+    test('Increases the product when id is 0', () => {
+        const _products = [
+            { id: 1, title: 'lemon', price: 20 },
+            { id: 2, title: 'pine', price: 30 },
+            { id: 0, title: 'apple', price: 10 },
+        ]
+
+        const updatedProducts = priceIncrease(_products, 10, 0)
+        const updatedProduct = updatedProducts.find((item) => {
+            return item.id === 0
+        })
+        expect(updatedProduct.price).toBe(100)
+
     })
 
     test('Call without all params', () => {
@@ -58,6 +77,27 @@ describe('Map methods', () => {
         const productsDeepCopy = structuredClone(products)
         priceIncrease(products, 10, 1)
         expect(products).toEqual(productsDeepCopy)
+    })
+
+    test('Returns an empty array when input is empty and id is omitted', () => {
+        expect(priceIncrease([], 10)).toEqual([])
+    })
+
+    test('returns an empty array when called with empty input', () => {
+        expect(priceIncrease([])).toEqual([])
+    })
+
+    test.each([
+        { caseName: 'numeric string', factor: '10', id: 1 },
+        { caseName: 'NaN', factor: NaN, id: 1 },
+    ])('Throws when factor is $caseName', ({ factor, id }) => {
+
+        const callPriceIncrease = () => {
+            priceIncrease(createProducts(), factor, id)
+        }
+
+        expect(callPriceIncrease).toThrow(TypeError)
+        expect(callPriceIncrease).toThrow('factor must be a finite number')
     })
 })
 
