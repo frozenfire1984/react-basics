@@ -1,5 +1,5 @@
 import { describe, expect, test } from 'vitest'
-import {priceIncrease} from './array-methods.js'
+import { priceIncrease } from './map.js'
 
 function createProducts() {
     return [
@@ -10,7 +10,6 @@ function createProducts() {
 }
 
 describe('MAP METHODS. priceIncrease()', () => {
-
     describe('Basic behavior', () => {
         test('- price of id:1 element is increased at 10 time', () => {
 

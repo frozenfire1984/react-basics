@@ -1,6 +1,6 @@
 import styles from './TodoItem.module.scss'
 
-function TodoItem({item, onRemove, onDone}) {
+function TodoItem({ item, onRemove, onDone }) {
     return (
         <li className={` ${styles.item}  ${item.done ? styles.item_done : ''}`}>
             <div>{item.id} </div>
