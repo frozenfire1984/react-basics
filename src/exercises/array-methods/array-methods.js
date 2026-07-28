@@ -95,7 +95,7 @@ export function priceIncrease(arr, factor = 1, id) {
 //const productsUpd = priceIncrease([], 1000)
 
 //console.log(productsUpd)
-//console.log(products)
+console.log(products)
 
 /*console.log(productsUpd[0] === products[0])
 console.log(productsUpd[1] === products[1])
